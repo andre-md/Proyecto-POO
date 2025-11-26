@@ -1,21 +1,21 @@
 package Clases;
 
 public class Canchas {
-    private String codigo,tipo;
+    private String idcancha,tipo;
     private double precioh;
 
-    public Canchas(String codigo, String tipo, double precioh) {
-        this.codigo = codigo;
+    public Canchas(String idcancha, String tipo, double precioh) {
+        this.idcancha = idcancha;
         this.tipo = tipo;
         this.precioh = precioh;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getIdcancha() {
+        return idcancha;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setIdcancha(String idcancha) {
+        this.idcancha = idcancha;
     }
 
     public String getTipo() {
@@ -42,10 +42,10 @@ public class Canchas {
             return false;
         }
         Canchas can= (Canchas)obj;
-        return codigo.equals(can.codigo);
+        return idcancha.equals(can.idcancha);
     }
     
     public int hashCode(){
-        return codigo.hashCode();
+        return idcancha.hashCode();
     }
 }
