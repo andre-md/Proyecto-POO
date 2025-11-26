@@ -1,6 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+
 
 package Clases;
 
@@ -12,5 +10,6 @@ public class SISTEMADEGESTIONDECANCHAS {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        System.out.println("asodasdha");
     }
 }
