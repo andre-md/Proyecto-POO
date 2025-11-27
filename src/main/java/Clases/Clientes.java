@@ -33,18 +33,4 @@ public class Clientes {
         this.telefono = telefono;
     }
     
-    public boolean equals(Object obj){
-        if(this==obj){
-            return true;
-        }
-        if(obj==null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Clientes cli= (Clientes)obj;
-        return dni.equals(cli.dni);
-    }
-    
-    public int hashCode(){
-        return dni.hashCode();
-    }
 }

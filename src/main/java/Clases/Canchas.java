@@ -34,18 +34,4 @@ public class Canchas {
         this.precioh = precioh;
     }
     
-    public boolean equals(Object obj){
-        if(this==obj){
-            return true;
-        }
-        if(obj==null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Canchas can= (Canchas)obj;
-        return idcancha.equals(can.idcancha);
-    }
-    
-    public int hashCode(){
-        return idcancha.hashCode();
-    }
 }

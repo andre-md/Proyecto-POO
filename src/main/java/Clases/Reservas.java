@@ -67,19 +67,6 @@ public class Reservas {
         this.pagototal = pagototal;
     }
 
-   
-   
-    public boolean equals(Object obj){
-        if(this == obj){
-            return true;
-        }
-        if(obj == null || getClass() != obj.getClass()){
-            return false;
-        }
-        Reservas res = (Reservas)obj;
-        return idreserva.equals(res.idreserva);
-    }
-    
     public String toString(){
         return "Reserva #: " + idreserva +
                " Cliente: " + dni + 
