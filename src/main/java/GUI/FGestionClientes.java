@@ -37,7 +37,6 @@ public class FGestionClientes extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         MODELO = new javax.swing.JTable();
-        BTCARGARTABLA = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -76,14 +75,6 @@ public class FGestionClientes extends javax.swing.JFrame {
         jScrollPane1.setViewportView(MODELO);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 450, 340));
-
-        BTCARGARTABLA.setText("CARGAR");
-        BTCARGARTABLA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTCARGARTABLAActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BTCARGARTABLA, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 120, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("GESTION DE CLIENTES");
@@ -174,11 +165,6 @@ public class FGestionClientes extends javax.swing.JFrame {
     }
     }
     
-    private void BTCARGARTABLAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTCARGARTABLAActionPerformed
-        cargarTabla();
-    }//GEN-LAST:event_BTCARGARTABLAActionPerformed
-
-    
     
     private void BTGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTGuardarActionPerformed
         
@@ -207,7 +193,6 @@ public class FGestionClientes extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BTCARGARTABLA;
     private javax.swing.JButton BTGuardar;
     private javax.swing.JTable MODELO;
     private javax.swing.JButton jButton1;
