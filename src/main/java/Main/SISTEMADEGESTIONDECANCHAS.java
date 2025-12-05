@@ -14,7 +14,7 @@ public class SISTEMADEGESTIONDECANCHAS {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/GestionCanchas";
         String user = "root";
-        String password = "andre123";
+        String password = "21122006";
         
         try{
            Connection connection = DriverManager.getConnection(url, user, password);

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package SQL;
 
 import java.sql.Connection;
@@ -16,7 +12,7 @@ public class ConexionSQL {
     
         private static String url = "jdbc:mysql://localhost:3306/GestionCanchas";
         private static String user = "root";
-        private static String password = "andre123";
+        private static String password = "21122006";
         
         public static Connection obtenerConexion(){
             
@@ -24,7 +20,7 @@ public class ConexionSQL {
             
             try{
                 con = DriverManager.getConnection(url, user, password);
-            }catch(Exception e){
+            }catch(SQLException e){
                 System.out.println("Error en la conexion:" + e.getMessage());
             }
             return con;

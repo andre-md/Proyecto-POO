@@ -67,7 +67,7 @@ public class Reservas {
         this.pagototal = pagototal;
     }
 
-    public String toString(){
+    public String mostrarInfo(){
         return "Reserva #: " + idreserva +
                " Cliente: " + dni + 
                " Cancha: " + idcancha +

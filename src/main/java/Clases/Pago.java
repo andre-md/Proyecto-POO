@@ -85,7 +85,7 @@ public class Pago {
         this.observacion = observacion;
     }
     
-    public String toString() {
+    public String mostrarInfo() {
         return "Pago: " +
                 "ID=" + idpago +
                 ", Reserva=" + idreserva +
