@@ -11,10 +11,15 @@
         <exec.mainClass>com.mycompany.sistemadegestiondecanchas.SISTEMADEGESTIONDECANCHAS</exec.mainClass>
     </properties>
     <dependencies>
-    <dependency>
-        <groupId>com.microsoft.sqlserver</groupId>
-        <artifactId>mssql-jdbc</artifactId>
-        <version>13.2.1.jre11</version>
-    </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>  
+            <artifactId>mysql-connector-j</artifactId> 
+            <version>8.0.33</version> 
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE270</version>
+        </dependency>
     </dependencies>
 </project>

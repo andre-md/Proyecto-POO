@@ -1,20 +1,23 @@
 package Clases;
 
 public class Clientes {
-    private String nombre, dni, telefono;
+    
+    private int idCliente;
+    private String dni, nombres, telefono;
 
-    public Clientes(String nombre, String dni, String telefono) {
-        this.nombre = nombre;
+    public Clientes(int idCliente, String dni, String nombres, String telefono) {
+        this.idCliente= idCliente;
         this.dni = dni;
+        this.nombres = nombres;
         this.telefono = telefono;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getDni() {
@@ -23,6 +26,14 @@ public class Clientes {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
     public String getTelefono() {
