@@ -1,23 +1,14 @@
 CREATE DATABASE GestionCanchas;
-GO
-USE GestionCanchas;
-GO
 
--- ===========================================
---  TABLA CLIENTES (Ajustada)
--- 
--- Cambios: 
--- 1. idCliente como PRIMARY KEY autoincrementable.
--- 2. DNI como UNIQUE para asegurar que no se repita.
--- 3. Añadidos 'apellido' y 'email' para el modelo POO.
--- ===========================================
+USE GestionCanchas;
+
 CREATE TABLE Clientes (
-    idCliente INT IDENTITY(1,1) PRIMARY KEY,
-    dni VARCHAR(15) UNIQUE NOT NULL,      -- Clave candidata única
+    idCliente INT auto_increment PRIMARY KEY,
+    dni VARCHAR(15) UNIQUE NOT NULL,      -- Clave candidata Ãºnica
     nombres VARCHAR(200) NOT NULL,        -- Nombre completo (Nombres y/o Apellidos)
     telefono VARCHAR(20)
 );
-GO
+
 
 -- ===========================================
 --  TABLA CANCHAS (Ajustada)
@@ -27,12 +18,12 @@ GO
 -- 2. Codigo (VARCHAR) como UNIQUE para mantener el identificador original.
 -- ===========================================
 CREATE TABLE Canchas (
-    idCancha INT IDENTITY(1,1) PRIMARY KEY,
+    idCancha INT auto_increment PRIMARY KEY,
     codigo VARCHAR(20) UNIQUE NOT NULL, -- Identificador de la cancha, pero no la PK
     tipo VARCHAR(50) NOT NULL,
     precioh DECIMAL(10,2) NOT NULL
 );
-GO
+
 
 -- ===========================================
 --  TABLA RESERVAS (Ajustada)
@@ -42,7 +33,7 @@ GO
 -- 2. Las FOREIGN KEYs ahora referencian los IDs artificiales.
 -- ===========================================
 CREATE TABLE Reservas (
-    idReserva INT IDENTITY(1,1) PRIMARY KEY, -- Clave primaria INT
+    idReserva INT auto_increment PRIMARY KEY, -- Clave primaria INT
     idCliente INT NOT NULL,                  -- Foreign Key referenciando idCliente
     idCancha INT NOT NULL,                   -- Foreign Key referenciando idCancha
     horaInicio DATETIME NOT NULL,
@@ -52,7 +43,7 @@ CREATE TABLE Reservas (
     FOREIGN KEY (idCliente) REFERENCES Clientes(idCliente),
     FOREIGN KEY (idCancha) REFERENCES Canchas(idCancha)
 );
-GO
+
 
 -- ===========================================
 --  TABLA PAGOS (Ajustada)
@@ -61,7 +52,7 @@ GO
 -- 1. La FK idReserva ahora es INT para coincidir con la PK de Reservas.
 -- ===========================================
 CREATE TABLE Pagos (
-    idPago INT IDENTITY(1,1) PRIMARY KEY,
+    idPago INT auto_increment PRIMARY KEY,
     idReserva INT NOT NULL,               -- Foreign Key referenciando idReserva (INT)
     monto DECIMAL(10,2) NOT NULL,
     metodoPago VARCHAR(40),
@@ -71,3 +62,5 @@ CREATE TABLE Pagos (
 
     FOREIGN KEY (idReserva) REFERENCES Reservas(idReserva)
 );
+
+select *from Clientes;
