@@ -6,12 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class CanchasSQL {
-
+    ConexionSQL c= new ConexionSQL();
     public boolean insertar(Canchas can) {
-        ConexionSQL c= new ConexionSQL();
         String insertarC = "INSERT INTO Canchas(codigo, tipo, precioh) values(?, ?, ?)";
 
         try (Connection con = c.obtenerConexion()){
@@ -22,14 +20,13 @@ public class CanchasSQL {
             ps.execute();
             return true;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo insertar la cancha" + e.getMessage());
+            System.out.println("No se pudo insertar la cancha :( " + e.getMessage());
             return false;
         }
     }
 
     public ArrayList<Canchas> listar(){
         ArrayList<Canchas> lista = new ArrayList<>();
-        ConexionSQL c= new ConexionSQL();
         String mostrarP="Select * from Canchas";
         
         try(Connection cn=c.obtenerConexion()){
@@ -45,11 +42,10 @@ public class CanchasSQL {
         return lista;
     }
 
-    public static Canchas buscar(String codigo) {
-        ConexionSQL c= new ConexionSQL();
+    public Canchas buscar(String codigo) {
         String sql = "SELECT * FROM Canchas WHERE codigo = ?";
 
-        try (Connection con =c.obtenerConexion() ){
+        try (Connection con =c.obtenerConexion()){
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setString(1, codigo);
@@ -71,15 +67,14 @@ public class CanchasSQL {
     }
 
     public boolean actualizar(Canchas can) {
-        ConexionSQL cd=new ConexionSQL();
         String sql = "UPDATE Canchas SET tipo = ?, precioh = ? WHERE codigo = ?";
 
-        try (Connection con = cd.obtenerConexion()) {
+        try (Connection con = c.obtenerConexion()) {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, can.getTipo());
             ps.setDouble(2, can.getPrecioh());
             ps.setString(3, can.getIdcancha());
-
+            ps.execute();
             return true;
 
         } catch (SQLException e) {
@@ -95,8 +90,8 @@ public class CanchasSQL {
         try (Connection con = cs.obtenerConexion())  {
         PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, codigo);
-
-            return ps.executeUpdate() > 0;
+            ps.execute();
+            return true;
 
         } catch (SQLException e) {
             System.out.println("Error eliminando cancha: " + e.getMessage());
