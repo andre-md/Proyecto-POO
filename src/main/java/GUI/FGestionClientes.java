@@ -46,7 +46,7 @@ public class FGestionClientes extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         txtdni = new javax.swing.JTextPane();
         jScrollPane5 = new javax.swing.JScrollPane();
-        txtnombres = new javax.swing.JTextPane();
+        txtnombre = new javax.swing.JTextPane();
         BTGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,7 +89,7 @@ public class FGestionClientes extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("NOMBRES");
+        jLabel4.setText("NOMBRE");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         jScrollPane3.setViewportView(txttelefono);
@@ -100,7 +100,7 @@ public class FGestionClientes extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 280, 40));
 
-        jScrollPane5.setViewportView(txtnombres);
+        jScrollPane5.setViewportView(txtnombre);
 
         jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 280, 40));
 
@@ -169,7 +169,7 @@ public class FGestionClientes extends javax.swing.JFrame {
     private void BTGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTGuardarActionPerformed
         
         String dni = txtdni.getText();
-        String nombres = txtnombres.getText();
+        String nombres = txtnombre.getText();
         String telefono = txttelefono.getText();
         
         if(dni.isEmpty() || nombres.isEmpty()){
@@ -206,7 +206,7 @@ public class FGestionClientes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextPane txtdni;
-    private javax.swing.JTextPane txtnombres;
+    private javax.swing.JTextPane txtnombre;
     private javax.swing.JTextPane txttelefono;
     // End of variables declaration//GEN-END:variables
 }

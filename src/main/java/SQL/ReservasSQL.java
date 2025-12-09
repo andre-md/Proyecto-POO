@@ -15,23 +15,22 @@ import java.time.LocalDateTime;
 public class ReservasSQL {
     ConexionSQL c= new ConexionSQL();
     
-    public boolean crear(Reservas res, Clientes cli, Canchas can,Pago pag) {
-        String insertarR = "INSERT INTO Reservas(idReserva, idCliente, idCancha, horaInicio, horaInicio,pagoTotal) values(?, ?, ?)";
+    public boolean añadir(Reservas res, Clientes cli, Canchas can,Pago pag) {
+        String insertarR = "INSERT INTO Reservas(idCliente, idCancha, horaInicio, horaFin,pagoTotal) values(?, ?, ?)";
 
         try (Connection con = c.obtenerConexion()){
             
             if (cruceHorario(con, can.getIdcancha(), res.getHorainicio(), res.getHorafin())) {
-                System.out.println("Error: La cancha ya está reservada en ese horario");
+                System.out.println("La cancha ya está reservada en ese horario");
                 return false;
             }
             
             PreparedStatement ps = con.prepareStatement(insertarR);
-            ps.setString(1,res.getIdreserva());
-            ps.setInt(2, cli.getIdCliente());
-            ps.setString(3, can.getIdcancha());
-            ps.setTimestamp(4, Timestamp.valueOf(res.getHorainicio()));
-            ps.setTimestamp(5, Timestamp.valueOf(res.getHorafin()));
-            ps.setDouble(6, pag.getMonto());
+            ps.setInt(1, cli.getIdCliente());
+            ps.setString(2, can.getIdcancha());
+            ps.setTimestamp(3, Timestamp.valueOf(res.getHorainicio()));
+            ps.setTimestamp(4, Timestamp.valueOf(res.getHorafin()));
+            ps.setDouble(5, pag.getMonto());
             ps.execute();
             return true;
         } catch (Exception e) {
@@ -39,8 +38,8 @@ public class ReservasSQL {
             return false;
         }
     }
-     private boolean cruceHorario(Connection con, String idCancha, LocalDateTime inicioNuevo, LocalDateTime finNuevo) {
-    String consulta = "SELECT COUNT(*) FROM reservas WHERE idCancha = "+ idCancha +" AND horalnico < "+finNuevo+" AND horaFin > "+inicioNuevo+";";
+    private boolean cruceHorario(Connection con, String idCancha, LocalDateTime inicioNuevo, LocalDateTime finNuevo) {
+    String consulta = "SELECT COUNT(*) FROM reservas WHERE idCancha = ? AND " + "horalnico < ? AND horafin > ?";
     
     try (PreparedStatement ps = con.prepareStatement(consulta)) {
         ps.setString(1, idCancha);
@@ -49,12 +48,43 @@ public class ReservasSQL {
         
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
-            return rs.getInt(1) > 0;
-        }
+            return rs.getInt(1) > 0;        }
     } catch (SQLException e) {
         System.out.println("Horario no disponible: " + e.getMessage());
     }
     return false;
-}
+    }
+    
+    public int limpiar() {
+    // Elimina reservas que terminaron hace más de 24 horas
+    String sql = "DELETE FROM reservas WHERE horaFin < DATE_SUB(NOW(), INTERVAL 1 DAY)";
+    
+    try (Connection con = c.obtenerConexion();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+        
+        int eliminadas = ps.executeUpdate();
+        System.out.println("Se eliminaron " + eliminadas + " reservas vencidas (más de 24h)");
+        return eliminadas;
+        
+    } catch (Exception e) {
+        System.out.println("No se pudo eliminar ninguna reserva: " + e.getMessage());
+        return 0;
+    }
+    }
+    
+    public boolean eliminar(int idReserva) {
+        String sql = "DELETE FROM Reservas WHERE idReserva=?";
+
+        try (Connection con = c.obtenerConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, idReserva);
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error eliminando reserva: " + e.getMessage());
+            return false;
+        }
+    }
 }
 

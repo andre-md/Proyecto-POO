@@ -101,7 +101,7 @@ public class FGestionCanchas extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 480, 340));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("GESTION DE LAS CANCHAS");
+        jLabel1.setText("GESTION DE CANCHAS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
         jButton1.setText("ACTUALIZAR");

@@ -3,27 +3,29 @@ package Clases;
 import java.time.LocalDateTime;
 
 public class Reservas {
-    private String idreserva;
+    private int idreserva;
     private String dni;
     private String idcancha;
     private LocalDateTime horainicio; 
     private LocalDateTime horafin; 
     private double pagototal;
+    private int horas;
 
-    public Reservas(String idreserva, String dni, String idcancha, LocalDateTime horainicio, LocalDateTime horafin, double pagototal) {
+    public Reservas(int idreserva, String dni, String idcancha, LocalDateTime horainicio, LocalDateTime horafin, double pagototal, int horas) {
         this.idreserva = idreserva;
         this.dni = dni;
         this.idcancha = idcancha;
         this.horainicio = horainicio;
         this.horafin = horafin;
         this.pagototal = pagototal;
+        this.horas = horas;
     }
 
-    public String getIdreserva() {
+    public int getIdreserva() {
         return idreserva;
     }
 
-    public void setIdreserva(String idreserva) {
+    public void setIdreserva(int idreserva) {
         this.idreserva = idreserva;
     }
 
@@ -66,4 +68,16 @@ public class Reservas {
     public void setPagototal(double pagototal) {
         this.pagototal = pagototal;
     }
+
+    public int getHoras() {
+        return horas;
+    }
+
+    public void setHoras(int horas) {
+        this.horas = horas;
+    }
+    
+    
+
+    
 }
