@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class FGestionCanchas extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FGestionCanchas.class.getName());
-
+    CanchasSQL cansql = new CanchasSQL();
     /**
      * Creates new form FGestionCanchas
      */
@@ -46,6 +46,7 @@ public class FGestionCanchas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         resultadotabla = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +108,9 @@ public class FGestionCanchas extends javax.swing.JFrame {
         jLabel1.setText("GESTION DE LAS CANCHAS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
+        jButton1.setText("jButton1");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,21 +125,19 @@ public class FGestionCanchas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void cargarTabla() {
-        DefaultTableModel tabla = new DefaultTableModel();
-        tabla.addColumn("CODIGO");
-        tabla.addColumn("TIPO");
-        tabla.addColumn("PRECIO/HORA");
+        String[] columnas = {"Código", "Tipo", "Precio"};
+        DefaultTableModel tabla = new DefaultTableModel(columnas,0);
 
         try {
-            CanchasSQL cansql = new CanchasSQL();
             List<Canchas> lista = cansql.listar();
 
             for (Canchas can : lista) {
-                    tabla.addRow(new Object[]{
+                    Object [] fila={
                         can.getIdcancha(),
                         can.getTipo(),
                         can.getPrecioh()
-                    });
+                    };
+                    tabla.addRow(fila);
                 }
 
             resultadotabla.setModel(tabla);
@@ -165,13 +167,11 @@ public class FGestionCanchas extends javax.swing.JFrame {
 
         Canchas can = new Canchas(c, t, p);
 
-        CanchasSQL cansql = new CanchasSQL();
-
         if(cansql.insertar(can)){
-            JOptionPane.showMessageDialog(null, "Cliente GUARDADO exitosamente");
+            JOptionPane.showMessageDialog(null, "Cancha GUARDADA exitosamente");
             cargarTabla();
         } else{
-            JOptionPane.showMessageDialog(null, "Error al guardar el cliente.");
+            JOptionPane.showMessageDialog(null, "Error al guardar la cancha.");
         }
 
     }//GEN-LAST:event_guardarActionPerformed
@@ -181,6 +181,7 @@ public class FGestionCanchas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane codigo;
     private javax.swing.JButton guardar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

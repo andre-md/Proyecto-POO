@@ -6,47 +6,51 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class CanchasSQL {
 
     public boolean insertar(Canchas can) {
+        ConexionSQL c= new ConexionSQL();
+        String insertarC = "INSERT INTO Canchas(codigo, tipo, precioh) values(?, ?, ?)";
 
-        String sql = "INSERT INTO Canchas(codigo, tipo, precioh) values(?, ?, ?)";
-
-        try (Connection con = ConexionSQL.obtenerConexion(); PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = c.obtenerConexion()){
+            PreparedStatement ps = con.prepareStatement(insertarC);
             ps.setString(1, can.getIdcancha());
             ps.setString(2, can.getTipo());
             ps.setDouble(3, can.getPrecioh());
-
-            return ps.executeUpdate() > 0;
+            ps.execute();
+            return true;
         } catch (Exception e) {
-            System.out.println("No se pudo insertar la cancha" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se pudo insertar la cancha" + e.getMessage());
             return false;
         }
     }
 
-    public ArrayList<Canchas> listar() {
+    public ArrayList<Canchas> listar(){
         ArrayList<Canchas> lista = new ArrayList<>();
-        String sql = "SELECT * FROM Canchas";
-
-        try (Connection con = ConexionSQL.obtenerConexion(); PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
-
-            while (rs.next()) {
-                Canchas can = new Canchas(rs.getString("Codigo"), rs.getString("Tipo"), rs.getDouble("Precioh"));
-                lista.add(can);
+        ConexionSQL c= new ConexionSQL();
+        String mostrarP="Select * from Canchas";
+        
+        try(Connection cn=c.obtenerConexion()){
+            PreparedStatement ps=cn.prepareStatement(mostrarP);
+            ResultSet re=ps.executeQuery();
+            while(re.next()){
+                Canchas ce=new Canchas(re.getString("codigo"), re.getString("tipo"), re.getDouble("precioh"));
+                lista.add(ce);
             }
-
-        } catch (SQLException e) {
-            System.out.println("Error listando clientes: " + e.getMessage());
+        }catch(SQLException e){
+            System.out.println("Error al mostrar la tabla de Canchas: "+e.getMessage());
         }
-
         return lista;
     }
 
-    public Canchas buscar(String codigo) {
+    public static Canchas buscar(String codigo) {
+        ConexionSQL c= new ConexionSQL();
         String sql = "SELECT * FROM Canchas WHERE codigo = ?";
 
-        try (Connection con = ConexionSQL.obtenerConexion(); PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con =c.obtenerConexion() ){
+            PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setString(1, codigo);
             ResultSet rs = ps.executeQuery();
@@ -67,15 +71,16 @@ public class CanchasSQL {
     }
 
     public boolean actualizar(Canchas can) {
+        ConexionSQL cd=new ConexionSQL();
         String sql = "UPDATE Canchas SET tipo = ?, precioh = ? WHERE codigo = ?";
 
-        try (Connection con = ConexionSQL.obtenerConexion(); PreparedStatement ps = con.prepareStatement(sql)) {
-
+        try (Connection con = cd.obtenerConexion()) {
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, can.getTipo());
             ps.setDouble(2, can.getPrecioh());
             ps.setString(3, can.getIdcancha());
 
-            return ps.executeUpdate() > 0;
+            return true;
 
         } catch (SQLException e) {
             System.out.println("Error actualizando cancha: " + e.getMessage());
@@ -84,10 +89,11 @@ public class CanchasSQL {
     }
 
     public boolean eliminar(String codigo) {
+        ConexionSQL cs=new ConexionSQL();
         String sql = "DELETE FROM Canchas WHERE codigo = ?";
 
-        try (Connection con = ConexionSQL.obtenerConexion(); PreparedStatement ps = con.prepareStatement(sql)) {
-
+        try (Connection con = cs.obtenerConexion())  {
+        PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, codigo);
 
             return ps.executeUpdate() > 0;

@@ -8,7 +8,7 @@ public class ConexionSQL {
         private static String user = "root";
         private static String password = "21122006";
         
-        public static Connection obtenerConexion(){
+        public Connection obtenerConexion(){
             try{
                 return DriverManager.getConnection(url, user, password);
             }catch(SQLException e){
