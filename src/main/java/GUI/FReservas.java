@@ -233,7 +233,7 @@ public class FReservas extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 320, 40));
 
-        jLabel12.setText("Ejem: ");
+        jLabel12.setText("Ejem:  01-02-2025");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
