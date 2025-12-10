@@ -58,11 +58,24 @@ public class ReservasSQL {
                 
                 lista.add(r);
             }
-            
         } catch(SQLException e){
             System.out.println("Error listando reservas: " + e.getMessage());
         }
-        
         return lista;
+    }
+    
+    //ELIMINAR RESERVAS
+    public boolean eliminar(int idReserva) {
+        String sql = "DELETE FROM Reservas WHERE idReserva = ?";
+
+        try (Connection con = ConexionSQL.obtenerConexion(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, idReserva);
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error eliminando reserva: " + e.getMessage());
+            return false;
+        }
     }
 }

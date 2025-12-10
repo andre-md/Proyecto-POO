@@ -77,25 +77,7 @@ public class CanchasSQL {
     }
 
     
-    
-    public boolean actualizar(Canchas can) {
-        String sql = "UPDATE Canchas SET tipo = ?, precioh = ? WHERE idCancha = ?";
-
-        try (Connection con = ConexionSQL.obtenerConexion();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setString(1, can.getTipo());
-            ps.setDouble(2, can.getPrecioh());
-            ps.setInt(3, can.getIdcancha());
-
-            return ps.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            System.out.println("Error actualizando cancha: " + e.getMessage());
-            return false;
-        }
-    }
-    
+    //OBTENER EL PRECIO DE LAS CANCHAS
     public double obtenerPrecioPorId(int idCancha) {
         String sql = "SELECT precioh FROM Canchas WHERE idCancha = ?";
 
@@ -115,20 +97,4 @@ public class CanchasSQL {
         return 0;
     }
 
-
-    public boolean eliminar(int idCancha) {
-        String sql = "DELETE FROM Canchas WHERE idCancha = ?";
-
-        try (Connection con = ConexionSQL.obtenerConexion();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, idCancha);
-
-            return ps.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            System.out.println("Error eliminando cancha: " + e.getMessage());
-            return false;
-        }
-    }
 }

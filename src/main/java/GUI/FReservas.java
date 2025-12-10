@@ -43,21 +43,6 @@ public class FReservas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        BTVolver1 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        CBPAGO1 = new javax.swing.JComboBox<>();
-        CBCanchas1 = new javax.swing.JComboBox<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TablaReservas1 = new javax.swing.JTable();
-        BTGuardar1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        CBCliente1 = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txtFecha1 = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
         BTVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -77,80 +62,7 @@ public class FReservas extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         txtHoras = new javax.swing.JTextPane();
         jLabel12 = new javax.swing.JLabel();
-
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BTVolver1.setText("VOLVER");
-        BTVolver1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTVolver1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BTVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 570, 110, 60));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel6.setText("GESTION DE RESERVAS");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 250, 70));
-
-        CBPAGO1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Yape", "Tarjeta" }));
-        jPanel2.add(CBPAGO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 110, 50));
-
-        CBCanchas1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBCanchas1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(CBCanchas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 100, 50));
-
-        TablaReservas1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Cliente", "Cancha", "Horas", "Fecha", "Metodo de Pago", "Total"
-            }
-        ));
-        jScrollPane2.setViewportView(TablaReservas1);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 620, 390));
-
-        BTGuardar1.setText("GUARDAR");
-        BTGuardar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTGuardar1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BTGuardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 110, 60));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel7.setText("Metodo de Pago");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel8.setText("Clientes");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel9.setText("Canchas");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, -1));
-
-        CBCliente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBCliente1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(CBCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 100, 50));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel10.setText("Fecha");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
-
-        jScrollPane4.setViewportView(txtFecha1);
-
-        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 320, 40));
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,7 +74,7 @@ public class FReservas extends javax.swing.JFrame {
                 BTVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(BTVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 570, 110, 60));
+        jPanel1.add(BTVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 700, 110, 60));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("GESTION DE RESERVAS");
@@ -183,7 +95,7 @@ public class FReservas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cliente", "Cancha", "Horas", "Fecha", "Metodo de Pago", "Total"
+                "ID", "Cliente", "Cancha", "Horas", "Fecha", "Metodo de Pago", "Total"
             }
         ));
         jScrollPane1.setViewportView(TablaReservas);
@@ -196,7 +108,7 @@ public class FReservas extends javax.swing.JFrame {
                 BTGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(BTGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 110, 60));
+        jPanel1.add(BTGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 440, 110, 60));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel2.setText("Metodo de Pago");
@@ -233,8 +145,16 @@ public class FReservas extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 320, 40));
 
-        jLabel12.setText("Ejem:  01-02-2025");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
+        jLabel12.setText("Ejem:  \"01-02-2025\"");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, -1, -1));
+
+        jButton1.setText("ELIMINAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 570, 110, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -290,6 +210,7 @@ public class FReservas extends javax.swing.JFrame {
             String nombreCliente = cliSql.obtenerNombrePorId(r.getIdCliente());
             String nombreCancha = canSql.obtenerNombreporID(r.getIdCancha());
             model.addRow(new Object[]{
+                r.getIdReserva(),
                 nombreCliente,
                 nombreCancha,
                 r.getHoras(),
@@ -345,58 +266,54 @@ public class FReservas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BTGuardarActionPerformed
 
-    private void BTVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTVolver1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTVolver1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int fila = TablaReservas.getSelectedRow();
 
-    private void CBCanchas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCanchas1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CBCanchas1ActionPerformed
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una reserva para eliminar.");
+            return;
+        }
 
-    private void BTGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTGuardar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTGuardar1ActionPerformed
+        int idReserva = Integer.parseInt(TablaReservas.getValueAt(fila, 0).toString());
 
-    private void CBCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCliente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CBCliente1ActionPerformed
+        ReservasSQL rsql = new ReservasSQL();
+
+        int confirm = JOptionPane.showConfirmDialog(null,
+                "¿Seguro que deseas eliminar la reserva?",
+                "Confirmar", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            if (rsql.eliminar(idReserva)) {
+                JOptionPane.showMessageDialog(null, "Reserva eliminada correctamente.");
+                ((DefaultTableModel) TablaReservas.getModel()).removeRow(fila);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error eliminando reserva.");
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTGuardar;
-    private javax.swing.JButton BTGuardar1;
     private javax.swing.JButton BTVolver;
-    private javax.swing.JButton BTVolver1;
     private javax.swing.JComboBox<ComboItem> CBCanchas;
-    private javax.swing.JComboBox<ComboItem> CBCanchas1;
     private javax.swing.JComboBox<ComboItem> CBCliente;
-    private javax.swing.JComboBox<ComboItem> CBCliente1;
     private javax.swing.JComboBox<String> CBPAGO;
-    private javax.swing.JComboBox<String> CBPAGO1;
     private javax.swing.JTable TablaReservas;
-    private javax.swing.JTable TablaReservas1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextPane txtFecha;
-    private javax.swing.JTextPane txtFecha1;
     private javax.swing.JTextPane txtHoras;
     // End of variables declaration//GEN-END:variables
 }

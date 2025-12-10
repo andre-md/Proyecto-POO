@@ -76,5 +76,19 @@ public class ClientesSQL {
         }
         return "";
     }
+    
+    //ELIMINAR CLIENTES
+    public boolean eliminar(int idCliente) {
+        String sql = "DELETE FROM Clientes WHERE idCliente = ?";
 
+        try (Connection con = ConexionSQL.obtenerConexion(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, idCliente);
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error eliminando cliente: " + e.getMessage());
+            return false;
+        }
+    }
 }

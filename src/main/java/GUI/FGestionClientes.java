@@ -34,7 +34,7 @@ public class FGestionClientes extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        MODELO = new javax.swing.JTable();
+        TablaClientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -46,6 +46,7 @@ public class FGestionClientes extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         txtnombres = new javax.swing.JTextPane();
         BTGuardar = new javax.swing.JButton();
+        BTEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +60,7 @@ public class FGestionClientes extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 120, 50));
 
-        MODELO.setModel(new javax.swing.table.DefaultTableModel(
+        TablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -70,7 +71,7 @@ public class FGestionClientes extends javax.swing.JFrame {
                 "ID", "DNI", "NOMBRES", "TELEFONO"
             }
         ));
-        jScrollPane1.setViewportView(MODELO);
+        jScrollPane1.setViewportView(TablaClientes);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 450, 340));
 
@@ -108,7 +109,15 @@ public class FGestionClientes extends javax.swing.JFrame {
                 BTGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(BTGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 110, 50));
+        jPanel1.add(BTGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 110, 50));
+
+        BTEliminar.setText("ELIMINAR");
+        BTEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BTEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 110, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,7 +164,7 @@ public class FGestionClientes extends javax.swing.JFrame {
             });
         }
 
-        MODELO.setModel(tabla); 
+        TablaClientes.setModel(tabla); 
 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null,
@@ -189,10 +198,37 @@ public class FGestionClientes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BTGuardarActionPerformed
 
+    private void BTEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTEliminarActionPerformed
+        int fila = TablaClientes.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione un cliente para eliminar.");
+            return;
+        }
+
+        int idCliente = Integer.parseInt(TablaClientes.getValueAt(fila, 0).toString());
+
+        ClientesSQL cliSql = new ClientesSQL();
+
+        int confirm = JOptionPane.showConfirmDialog(null,
+                "¿Seguro que quieres eliminar este cliente?",
+                "Confirmar", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            if (cliSql.eliminar(idCliente)) {
+                JOptionPane.showMessageDialog(null, "Cliente eliminado correctamente.");
+                ((DefaultTableModel) TablaClientes.getModel()).removeRow(fila);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al eliminar cliente.");
+            }
+        }
+    }//GEN-LAST:event_BTEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTEliminar;
     private javax.swing.JButton BTGuardar;
-    private javax.swing.JTable MODELO;
+    private javax.swing.JTable TablaClientes;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
