@@ -4,6 +4,18 @@
  */
 package GUI;
 
+import Clases.Canchas;
+import Clases.Clientes;
+import Clases.Reservas;
+import SQL.CanchasSQL;
+import SQL.ClientesSQL;
+import SQL.ReservasSQL;
+import Utils.ComboItem;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author carlo
@@ -17,6 +29,9 @@ public class FReservas extends javax.swing.JFrame {
      */
     public FReservas() {
         initComponents();
+        CargarClientes();
+        CargarCanchas();
+        cargarTabla();
     }
 
     /**
@@ -28,46 +43,360 @@ public class FReservas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        BTVolver1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        CBPAGO1 = new javax.swing.JComboBox<>();
+        CBCanchas1 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaReservas1 = new javax.swing.JTable();
+        BTGuardar1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        CBCliente1 = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtFecha1 = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BTVolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        CBPAGO = new javax.swing.JComboBox<>();
+        CBCanchas = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaReservas = new javax.swing.JTable();
+        BTGuardar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        CBCliente = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtFecha = new javax.swing.JTextPane();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtHoras = new javax.swing.JTextPane();
+        jLabel12 = new javax.swing.JLabel();
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BTVolver1.setText("VOLVER");
+        BTVolver1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTVolver1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BTVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 570, 110, 60));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel6.setText("GESTION DE RESERVAS");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 250, 70));
+
+        CBPAGO1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Yape", "Tarjeta" }));
+        jPanel2.add(CBPAGO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 110, 50));
+
+        CBCanchas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBCanchas1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(CBCanchas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 100, 50));
+
+        TablaReservas1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Cliente", "Cancha", "Horas", "Fecha", "Metodo de Pago", "Total"
+            }
+        ));
+        jScrollPane2.setViewportView(TablaReservas1);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 620, 390));
+
+        BTGuardar1.setText("GUARDAR");
+        BTGuardar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTGuardar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BTGuardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 110, 60));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel7.setText("Metodo de Pago");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel8.setText("Clientes");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel9.setText("Canchas");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, -1));
+
+        CBCliente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBCliente1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(CBCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 100, 50));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel10.setText("Fecha");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+
+        jScrollPane4.setViewportView(txtFecha1);
+
+        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 320, 40));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("VOLVER");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BTVolver.setText("VOLVER");
+        BTVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BTVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 413, 110, 60));
+        jPanel1.add(BTVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 570, 110, 60));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("GESTION DE RESERVAS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 250, 70));
+
+        CBPAGO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Yape", "Tarjeta" }));
+        jPanel1.add(CBPAGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 110, 50));
+
+        CBCanchas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBCanchasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CBCanchas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 100, 50));
+
+        TablaReservas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cliente", "Cancha", "Horas", "Fecha", "Metodo de Pago", "Total"
+            }
+        ));
+        jScrollPane1.setViewportView(TablaReservas);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 620, 390));
+
+        BTGuardar.setText("GUARDAR");
+        BTGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTGuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BTGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 110, 60));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel2.setText("Metodo de Pago");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel3.setText("Clientes");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel4.setText("Canchas");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, -1));
+
+        CBCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CBCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 100, 50));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel5.setText("Fecha");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+
+        jScrollPane3.setViewportView(txtFecha);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 320, 40));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel11.setText("Horas ");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
+
+        jScrollPane5.setViewportView(txtHoras);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 320, 40));
+
+        jLabel12.setText("Ejem: ");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BTVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTVolverActionPerformed
         MenuPrincipal m = new MenuPrincipal();
         m.setVisible(true);
         m.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BTVolverActionPerformed
+
+    private void CargarClientes(){
+        ClientesSQL clisql = new ClientesSQL();
+        for (Clientes c : clisql.listar()){
+            CBCliente.addItem(new ComboItem(c.getIdCliente(), c.getNombres()));
+        }  
+    }
+    
+    private void CargarCanchas(){
+        CanchasSQL cansql = new CanchasSQL();
+        for (Canchas ca : cansql.listar()){
+            CBCanchas.addItem(new ComboItem(ca.getIdcancha(), ca.getTipo()));
+        }
+    }
+    private void CBClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBClienteActionPerformed
+         //COMBOBOX DE LOS CLIENTES
+    }//GEN-LAST:event_CBClienteActionPerformed
+
+    private void CBCanchasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCanchasActionPerformed
+         //COMBOBOX DE LAS CANCHAS
+    }//GEN-LAST:event_CBCanchasActionPerformed
+
+    private void cargarTabla(){
+        DefaultTableModel model = (DefaultTableModel) TablaReservas.getModel();
+        model.setRowCount(0);
+
+        ReservasSQL rsql = new ReservasSQL();
+        ClientesSQL cliSql = new ClientesSQL();
+        CanchasSQL canSql = new CanchasSQL();
+        
+        for (Reservas r : rsql.listar()) {
+            String nombreCliente = cliSql.obtenerNombrePorId(r.getIdCliente());
+            String nombreCancha = canSql.obtenerNombreporID(r.getIdCancha());
+            model.addRow(new Object[]{
+                nombreCliente,
+                nombreCancha,
+                r.getHoras(),
+                r.getFechaReserva(),
+                r.getMetodoPago(),
+                r.getPagototal()
+            });
+        }
+    }
+    
+    private void BTGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTGuardarActionPerformed
+        try {
+            ComboItem cli = (ComboItem) CBCliente.getSelectedItem();
+            ComboItem cancha = (ComboItem) CBCanchas.getSelectedItem();
+
+            int idCliente = cli.getId();
+            int idCancha = cancha.getId();
+
+            // Obtener precio fijo de la cancha
+            CanchasSQL canSql = new CanchasSQL();
+            double precio = canSql.obtenerPrecioPorId(idCancha);
+
+            // FECHA INGRESADA POR EL USUARIO
+            
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("[dd-MM-yyyy]");
+            
+            LocalDate fecha = LocalDate.parse(txtFecha.getText(), formato); //FORMATO DE FECHA POR DEFECTO YYYY-MM-DD
+           
+
+            //Metodo de Pago
+            String metodoPago = CBPAGO.getSelectedItem().toString();
+            
+            //TOTAL A PAGAR
+            int horas = Integer.parseInt(txtHoras.getText());
+            
+            //TOTAL A PAGAR
+            double total = precio * horas;
+            
+            // Crear reserva
+            Reservas r = new Reservas(0, idCliente, idCancha, horas, metodoPago, fecha, total);
+
+            ReservasSQL rsql = new ReservasSQL();
+
+            if (rsql.insertar(r)) {
+                JOptionPane.showMessageDialog(null, "Reserva guardada correctamente.");
+                cargarTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error guardando reserva.");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_BTGuardarActionPerformed
+
+    private void BTVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTVolver1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTVolver1ActionPerformed
+
+    private void CBCanchas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCanchas1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBCanchas1ActionPerformed
+
+    private void BTGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTGuardar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTGuardar1ActionPerformed
+
+    private void CBCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCliente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBCliente1ActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BTGuardar;
+    private javax.swing.JButton BTGuardar1;
+    private javax.swing.JButton BTVolver;
+    private javax.swing.JButton BTVolver1;
+    private javax.swing.JComboBox<ComboItem> CBCanchas;
+    private javax.swing.JComboBox<ComboItem> CBCanchas1;
+    private javax.swing.JComboBox<ComboItem> CBCliente;
+    private javax.swing.JComboBox<ComboItem> CBCliente1;
+    private javax.swing.JComboBox<String> CBPAGO;
+    private javax.swing.JComboBox<String> CBPAGO1;
+    private javax.swing.JTable TablaReservas;
+    private javax.swing.JTable TablaReservas1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextPane txtFecha;
+    private javax.swing.JTextPane txtFecha1;
+    private javax.swing.JTextPane txtHoras;
     // End of variables declaration//GEN-END:variables
 }

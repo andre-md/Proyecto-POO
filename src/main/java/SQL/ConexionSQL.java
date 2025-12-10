@@ -6,7 +6,7 @@ public class ConexionSQL {
     
         private static String url = "jdbc:mysql://localhost:3306/GestionCanchas";
         private static String user = "root";
-        private static String password = "21122006";
+        private static String password = "andre123"; //TU CONTRASEÑA DE SQLWORKBENCH
         
         public static Connection obtenerConexion(){
             try{

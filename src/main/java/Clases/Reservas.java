@@ -1,62 +1,72 @@
 package Clases;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Reservas {
-    private String idreserva;
-    private String dni;
-    private String idcancha;
-    private LocalDateTime horainicio; 
-    private LocalDateTime horafin; 
+    private int idReserva;
+    private int idCliente;
+    private int idCancha;
+    private int horas;
+    private String metodoPago;
+    private LocalDate fechaReserva;
     private double pagototal;
 
-    public Reservas(String idreserva, String dni, String idcancha, LocalDateTime horainicio, LocalDateTime horafin, double pagototal) {
-        this.idreserva = idreserva;
-        this.dni = dni;
-        this.idcancha = idcancha;
-        this.horainicio = horainicio;
-        this.horafin = horafin;
+    public Reservas(int idReserva, int idCliente, int idCancha, int horas, String metodoPago, LocalDate fechaReserva, double pagototal) {
+        this.idReserva = idReserva;
+        this.idCliente = idCliente;
+        this.idCancha = idCancha;
+        this.horas = horas;
+        this.metodoPago = metodoPago;
+        this.fechaReserva = fechaReserva;
         this.pagototal = pagototal;
     }
 
-    public String getIdreserva() {
-        return idreserva;
+    public int getIdReserva() {
+        return idReserva;
     }
 
-    public void setIdreserva(String idreserva) {
-        this.idreserva = idreserva;
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
     }
 
-    public String getDni() {
-        return dni;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public String getIdcancha() {
-        return idcancha;
+    public int getIdCancha() {
+        return idCancha;
     }
 
-    public void setIdcancha(String idcancha) {
-        this.idcancha = idcancha;
+    public void setIdCancha(int idCancha) {
+        this.idCancha = idCancha;
     }
 
-    public LocalDateTime getHorainicio() {
-        return horainicio;
+    public int getHoras() {
+        return horas;
     }
 
-    public void setHorainicio(LocalDateTime horainicio) {
-        this.horainicio = horainicio;
+    public void setHoras(int horas) {
+        this.horas = horas;
     }
 
-    public LocalDateTime getHorafin() {
-        return horafin;
+    public String getMetodoPago() {
+        return metodoPago;
     }
 
-    public void setHorafin(LocalDateTime horafin) {
-        this.horafin = horafin;
+    public void setMetodoPago(String metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    public LocalDate getFechaReserva() {
+        return fechaReserva;
+    }
+
+    public void setFechaReserva(LocalDate fechaReserva) {
+        this.fechaReserva = fechaReserva;
     }
 
     public double getPagototal() {
@@ -67,12 +77,5 @@ public class Reservas {
         this.pagototal = pagototal;
     }
 
-    public String mostrarInfo(){
-        return "Reserva #: " + idreserva +
-               " Cliente: " + dni + 
-               " Cancha: " + idcancha +
-               " Inicio: " + horainicio +
-               " fin: " + horafin +
-               " Pago Total: " + pagototal;
-    }
+    
 }

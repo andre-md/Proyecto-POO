@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class ClientesSQL {
     
+    //INSERTAR NUEVO CLIENTE
     public boolean insertar(Clientes cli){
         
         String sql = "INSERT INTO Clientes(dni, nombres, telefono) values(?, ?, ?)";
@@ -32,6 +33,7 @@ public class ClientesSQL {
         } 
     }
     
+    //LISTAR TODOS LOS CLIENTES
     public ArrayList<Clientes> listar() {
         ArrayList<Clientes> lista = new ArrayList<>();
         String sql = "SELECT * FROM Clientes";
@@ -56,4 +58,23 @@ public class ClientesSQL {
 
         return lista;
     }
+    
+    //OBTENER NOMBRES DE LOS CLIENTES
+    public String obtenerNombrePorId(int idCliente) {
+        String sql = "SELECT nombres FROM Clientes WHERE idCliente = ?";
+        try (Connection con = ConexionSQL.obtenerConexion(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, idCliente);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("nombres");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error obteniendo nombre: " + e.getMessage());
+        }
+        return "";
+    }
+
 }

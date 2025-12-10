@@ -34,15 +34,15 @@ public class FGestionCanchas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         volver = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        codigo = new javax.swing.JTextPane();
+        txtcodigo = new javax.swing.JTextPane();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tipo = new javax.swing.JTextPane();
+        txttipo = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         guardar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        precioporhora = new javax.swing.JTextPane();
+        txtprecioh = new javax.swing.JTextPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultadotabla = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -59,11 +59,11 @@ public class FGestionCanchas extends javax.swing.JFrame {
         });
         jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 600, 120, 50));
 
-        jScrollPane4.setViewportView(codigo);
+        jScrollPane4.setViewportView(txtcodigo);
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 280, 40));
 
-        jScrollPane5.setViewportView(tipo);
+        jScrollPane5.setViewportView(txttipo);
 
         jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 280, 40));
 
@@ -87,7 +87,7 @@ public class FGestionCanchas extends javax.swing.JFrame {
         });
         jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 110, 30));
 
-        jScrollPane3.setViewportView(precioporhora);
+        jScrollPane3.setViewportView(txtprecioh);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 280, 40));
 
@@ -154,16 +154,16 @@ public class FGestionCanchas extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
 
-        String c = codigo.getText();
-        String t = tipo.getText();
-        double p = Double.parseDouble(precioporhora.getText());
+        String codigo = txtcodigo.getText();
+        String tipo = txttipo.getText();
+        double precioh = Double.parseDouble(txtprecioh.getText());
 
-        if(c.isEmpty()||t.isEmpty()){
+        if(tipo.isEmpty()){
             JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS SON OBLIGATORIOS.");
             return;
         }
 
-        Canchas can = new Canchas(c, t, p);
+        Canchas can = new Canchas(0,codigo, tipo, precioh);
 
         CanchasSQL cansql = new CanchasSQL();
 
@@ -179,7 +179,6 @@ public class FGestionCanchas extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextPane codigo;
     private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -190,9 +189,10 @@ public class FGestionCanchas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextPane precioporhora;
     private javax.swing.JTable resultadotabla;
-    private javax.swing.JTextPane tipo;
+    private javax.swing.JTextPane txtcodigo;
+    private javax.swing.JTextPane txtprecioh;
+    private javax.swing.JTextPane txttipo;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,8 +18,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FGestionClientes extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FGestionClientes.class.getName());
-
     /**
      * Creates new form FGestionClientes
      */

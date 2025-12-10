@@ -1,21 +1,32 @@
 package Clases;
 
 public class Canchas {
-    private String idcancha,tipo;
+    private int idcancha;
+    private String codigo;
+    private String tipo;
     private double precioh;
 
-    public Canchas(String idcancha, String tipo, double precioh) {
+    public Canchas(int idcancha, String codigo, String tipo, double precioh) {
         this.idcancha = idcancha;
+        this.codigo = codigo;
         this.tipo = tipo;
         this.precioh = precioh;
     }
 
-    public String getIdcancha() {
+    public int getIdcancha() {
         return idcancha;
     }
 
-    public void setIdcancha(String idcancha) {
+    public void setIdcancha(int idcancha) {
         this.idcancha = idcancha;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getTipo() {
@@ -33,5 +44,6 @@ public class Canchas {
     public void setPrecioh(double precioh) {
         this.precioh = precioh;
     }
+
     
 }
